@@ -64,7 +64,7 @@ class PlayList {
     /** Returns the total duration (in seconds) of all the tracks in this list.*/
     public int totalDuration() {
         int totals = 0;
-        for (int i = 0 ; i <this.tracks.length; i++){
+        for (int i = 0 ; i <this.size; i++){
             totals += this.tracks[i].getDuration();
         }
         return totals;
@@ -73,6 +73,9 @@ class PlayList {
     /** Returns the index of the track with the given title in this list.
      *  If such a track is not found, returns -1. */
     public int indexOf(String title) {
+        if (this.size==0){
+            return -1;
+        }
         for (int i = 0 ; i <this.tracks.length; i++){
             if (this.tracks[i].getTitle().equals(title)){
                 return i;
@@ -174,6 +177,8 @@ class PlayList {
      *  rather than returning a new, sorted playlist, the method sorts
      *  the list on which it was called (this list). */
     public void sortedInPlace() {
+        if (this.size == 0)// Already sorted or no elements to sort
+        return;
         // Uses the selection sort algorithm,  
         // calling the minIndex method in each iteration.
         for (int i = 0 ; i < this.tracks.length ; i ++){
