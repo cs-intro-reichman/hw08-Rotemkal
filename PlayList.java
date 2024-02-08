@@ -117,7 +117,7 @@ class PlayList {
      *  If such a track is not found, or the list is empty, or the given index
      *  is negative or too big for this list, does nothing. */
     public void remove(String title) {
-        if (this.size>0 &&){
+        if (this.size>0){
             int index = indexOf(title);
             if (index >= 0 && index < this.tracks.length){
                 remove(index);
@@ -155,7 +155,7 @@ class PlayList {
             int index , min = this.tracks[0].getDuration();
             for (int i = start+1 ; i < this.tracks.length ; i++){
                 if (this.tracks[i].getDuration()< min){
-                    min = this.tracks[i].getDuration()
+                    min = this.tracks[i].getDuration();
                     index = i;
                 }
             }
