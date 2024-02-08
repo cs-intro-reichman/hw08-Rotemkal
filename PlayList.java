@@ -3,7 +3,7 @@
 class PlayList {
     private Track[] tracks;  // Array of tracks (Track objects)   
     private int maxSize;     // Maximum number of tracks in the array
-    private int size;        // Actual number of tracks in the array
+    private static int size;        // Actual number of tracks in the array
 
     /** Constructs an empty play list with a maximum number of tracks. */ 
     public PlayList(int maxSize) {
