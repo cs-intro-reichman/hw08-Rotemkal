@@ -18,7 +18,7 @@ class PlayList {
     }
     
     /** Returns the current number of tracks in this play list. */ 
-    public static int getSize() {
+    public int getSize() {
         return size;
     }
 
@@ -152,7 +152,7 @@ class PlayList {
      */
     private int minIndex(int start) {
         if (start >= 0){
-            int index , min = this.tracks[0].getDuration();
+            int index = 0 , min = this.tracks[0].getDuration();
             for (int i = start+1 ; i < this.tracks.length ; i++){
                 if (this.tracks[i].getDuration()< min){
                     min = this.tracks[i].getDuration();
