@@ -3,7 +3,7 @@
 class PlayList {
     private Track[] tracks;  // Array of tracks (Track objects)   
     private int maxSize;     // Maximum number of tracks in the array
-    private static int size;        // Actual number of tracks in the array
+    private int size;        // Actual number of tracks in the array
 
     /** Constructs an empty play list with a maximum number of tracks. */ 
     public PlayList(int maxSize) {
@@ -57,6 +57,7 @@ class PlayList {
     /** Removes the last track from this list. If the list is empty, does nothing. */
      public void removeLast() {
         if (this.size>0){
+            this.tracks[this.size-1] = null;
         this.size--;
         }
     }
@@ -107,9 +108,10 @@ class PlayList {
      *  does nothing and returns -1. */
     public void remove(int i) {
         if (this.size > 0 && this.size != this.maxSize && i != 0 && i > this.size){
-            for (int j = i; j < this.tracks.length-1 ; j++){
+            for (int j = i; j < this.size-1 ; j++){
                 this.tracks[j] = this.tracks[j+1];
             }
+            this.tracks[this.size-1]= null;
             this.size--;
         }
 
@@ -181,9 +183,10 @@ class PlayList {
         return;
         // Uses the selection sort algorithm,  
         // calling the minIndex method in each iteration.
+        Track save;
         for (int i = 0 ; i < this.tracks.length ; i ++){
                 int min = minIndex(i);
-                Track save = this.tracks[i];
+                save = this.tracks[i];
                 this.tracks[i] = this.tracks[min];
                 this.tracks[min]= save;
             }
