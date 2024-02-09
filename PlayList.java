@@ -92,8 +92,8 @@ class PlayList {
      *  is full, does nothing and returns false. Otherwise, inserts the track and
      *  returns true. */
     public boolean add(int i, Track track) {
-        if (this.size != this.maxSize && i != 0 && i <= this.size){
-            for (int j = this.tracks.length-1; j < i ; j--){
+        if (this.size != this.maxSize && i >= 0 && i <= this.size){
+            for (int j = this.size; j > i ; j--){
                 this.tracks[j] = this.tracks[j-1];
             }
             this.tracks[i]= track;
@@ -107,14 +107,13 @@ class PlayList {
      *  If the list is empty, or the given index is negative or too big for this list, 
      *  does nothing and returns -1. */
     public void remove(int i) {
-        if (this.size > 0 && this.size != this.maxSize && i != 0 && i > this.size){
+        if (this.size > 0 && i != 0 && i > this.size){
             for (int j = i; j < this.size-1 ; j++){
                 this.tracks[j] = this.tracks[j+1];
             }
             this.tracks[this.size-1]= null;
             this.size--;
         }
-
     }
 
 
@@ -181,14 +180,14 @@ class PlayList {
     public void sortedInPlace() {
         if (this.size == 0)// Already sorted or no elements to sort
         return;
-        // Uses the selection sort algorithm,  
+        // Uses the selection sort algorithm,
         // calling the minIndex method in each iteration.
         Track save;
-        for (int i = 0 ; i < this.size ; i ++){
+        for (int i = 0 ; i < this.size-1; i ++){
                 int min = minIndex(i);
                 save = this.tracks[i];
                 this.tracks[i] = this.tracks[min];
                 this.tracks[min]= save;
             }
         }
-}
+    }
