@@ -77,7 +77,7 @@ class PlayList {
         if (this.size==0){
             return -1;
         }
-        for (int i = 0 ; i <this.tracks.length; i++){
+        for (int i = 0 ; i <this.size; i++){
             if (this.tracks[i].getTitle().equals(title)){
                 return i;
             }
@@ -158,7 +158,7 @@ class PlayList {
     private int minIndex(int start) {
         if (start >= 0){
             int index = 0 , min = this.tracks[0].getDuration();
-            for (int i = start+1 ; i < this.tracks.length ; i++){
+            for (int i = start+1 ; i < this.size ; i++){
                 if (this.tracks[i].getDuration()< min){
                     min = this.tracks[i].getDuration();
                     index = i;
@@ -184,7 +184,7 @@ class PlayList {
         // Uses the selection sort algorithm,  
         // calling the minIndex method in each iteration.
         Track save;
-        for (int i = 0 ; i < this.tracks.length ; i ++){
+        for (int i = 0 ; i < this.size ; i ++){
                 int min = minIndex(i);
                 save = this.tracks[i];
                 this.tracks[i] = this.tracks[min];
