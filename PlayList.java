@@ -107,11 +107,11 @@ class PlayList {
      *  If the list is empty, or the given index is negative or too big for this list, 
      *  does nothing and returns -1. */
     public void remove(int i) {
-        if (this.size > 0 && i != 0 && i > this.size){
+        if (this.size > 0 && i >= 0 && i <= this.maxSize){
             for (int j = i; j < this.size-1 ; j++){
                 this.tracks[j] = this.tracks[j+1];
             }
-            this.tracks[this.size-1]= null;
+            this.tracks[this.size - 1]= null;
             this.size--;
         }
     }
@@ -155,8 +155,8 @@ class PlayList {
      *  If start is negative or greater than size - 1, returns -1.
      */
     private int minIndex(int start) {
-        if (start >= 0){
-            int index = 0 , min = this.tracks[0].getDuration();
+        if (start >= 0 && start < this.size){
+            int index = start , min = this.tracks[start].getDuration();
             for (int i = start+1 ; i < this.size ; i++){
                 if (this.tracks[i].getDuration()< min){
                     min = this.tracks[i].getDuration();
